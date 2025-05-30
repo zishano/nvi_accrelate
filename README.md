@@ -11,6 +11,7 @@
 docker pull docker push zishanozty/project_3090:v0
 docker load -i test_3090.tar
 docker run --rm --shm-size=2g -it --name=tensorrt -e HF_ENDPOINT="https://hf-mirror.com" -v $PWD:/workspace --entrypoint /bin/bash --gpus all 3090:v0
+docker run --rm --shm-size=2g -it --name=tensorrt -e HF_ENDPOINT="https://hf-mirror.com" -v $PWD:/workspace --entrypoint /bin/bash --gpus '"device=1"' 3090:v0
 ```
 
 2. Clone the repository
