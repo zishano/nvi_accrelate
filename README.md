@@ -21,6 +21,7 @@ cd workspace
 
 ## How to use 
 1. run cnn(resnet50、mobilenetv2)
+```
 conda activate cnn
 cd workspace/tensorrt_cnn/
 bash resnet50_save.sh
@@ -32,6 +33,7 @@ bash mobilenetv2_save.sh
 bash mobilenetv2_fp32.sh
 bash mobilenetv2_fp16.sh
 bash mobilenetv2_int8.sh
+```
 
 2. run yolo(yolov5、yolov10、yolo-world)
 
