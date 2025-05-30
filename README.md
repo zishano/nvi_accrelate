@@ -24,7 +24,7 @@ cd workspace
 1. run cnn(resnet50、mobilenetv2)
 ```
 conda activate cnn
-cd workspace/tensorrt_cnn/
+cd /workspace/tensorrt_cnn/
 bash resnet50_save.sh
 bash resnet50_fp32.sh
 bash resnet50_fp16.sh
@@ -37,8 +37,21 @@ bash mobilenetv2_int8.sh
 ```
 
 2. run yolo(yolov5、yolov10、yolo-world)
+```
+conda activate yolo
+cd /workspace/yolo-models/
+python run.py gen
+python run.py eval
+```
 
-
-3. run llm(llama、bert)
+4. run llm(llama、bert)
+```
+conda activate llama
+cd /workspace/llm/TensorRT-LLM/examples/llama/test
+bash mmlu_test.sh
+conda activate bert
+cd /workspace/llm/TensorRT-LLM/examples/bert
+bash run_squad.sh
+```
 
 
