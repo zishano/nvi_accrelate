@@ -36,7 +36,6 @@ bash mobilenetv2_int8.sh
 
 2. run yolo(yolov5、yolov10、yolo-world)-Todo
 ```
-docker run -it --rm --gpus=all "--cap-add=SYS_ADMIN" --shm-size=16g --ulimit memlock=-1  --ulimit stack=67108864 -v $PWD:/workspace vits:v0
 cd /workspace/yolo-models/
 python run.py gen
 python run.py eval
@@ -44,6 +43,7 @@ python run.py eval
 
 3. run vits(vit、swin、tnt)
 ```
+docker run -it --rm --gpus=all "--cap-add=SYS_ADMIN" --shm-size=16g --ulimit memlock=-1  --ulimit stack=67108864 -v $PWD:/workspace vits:v0
 cd /workspace/llm/FasterTransformer/examples/pytorch/vit
 bash run_vit_fp16_accuracy.sh
 bash run_vit_int8_accuracy.sh
