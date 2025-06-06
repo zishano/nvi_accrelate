@@ -42,7 +42,7 @@ python run.py gen
 python run.py eval
 ```
 
-3. run cnn(vit、swin、tnt)
+3. run vits(vit、swin、tnt)
 ```
 cd /workspace/llm/FasterTransformer/examples/pytorch/vit
 bash run_vit_fp16_accuracy.sh
