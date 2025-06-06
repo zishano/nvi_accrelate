@@ -34,7 +34,7 @@ bash mobilenetv2_fp16.sh
 bash mobilenetv2_int8.sh
 ```
 
-2. run yolo(yolov5、yolov10、yolo-world)-Todo
+2. run yolo(yolov5、yolov10、yolo-world)-⭐Todo
 ```
 cd /workspace/yolo-models/
 python run.py gen
@@ -52,7 +52,7 @@ cd /workspace/llm/FasterTransformer/examples/pytorch/swin
 bash run_swin_fp16_accuracy.sh
 bash run_swin_int8_accuracy.sh
 
-tnt-Todo
+⭐tnt-Todo
 ```
 
 4. run llm(llama、bert)
