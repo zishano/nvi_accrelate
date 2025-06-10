@@ -3,9 +3,9 @@
 
 ## Updates
 * **`5.30, 2025`**: Update: We accomplished base
-* **
+* **`6.10, 2025`**: Update 
 
-## Install
+## Setup(⭐⭐⭐All ready!⭐⭐⭐)
 1. Setting docker(3090、4090、A100)
 ```
 docker pull docker push zishanozty/project_3090:v0
@@ -21,10 +21,11 @@ git clone https://github.com/zishanozty/nvi_accrelate
 cd workspace
 ```
 
-## How to use 
+## How to use(Accuray Test Results on 4090 & A100) 
 1. run cnn(resnet50、mobilenetv2)
 ```
-docker run --rm --shm-size=2g -it --name=tensorrt -e HF_ENDPOINT="https://hf-mirror.com" -v $PWD:/workspace --entrypoint /bin/bash --gpus all 3090:v0
+cd /home/limengkui/project
+docker run --rm --shm-size=2g -it --name=tensorrt -e HF_ENDPOINT="https://hf-mirror.com" -v $PWD:/workspace --entrypoint /bin/bash --gpus all project_cnn_llm:v0
 conda activate cnn
 cd /workspace/tensorrt_cnn/
 bash resnet50_fp16.sh
@@ -34,36 +35,43 @@ bash mobilenetv2_fp16.sh
 bash mobilenetv2_int8.sh
 ```
 
-2. run yolo(yolov5、yolov10、yolo-world)-⭐Todo
+2. run llm(llama、bert)
 ```
-cd /workspace/yolo-models/
-python run.py gen
-python run.py eval
+cd /home/limengkui/project
+docker run --rm --shm-size=2g -it --name=tensorrt -e HF_ENDPOINT="https://hf-mirror.com" -v $PWD:/workspace --entrypoint /bin/bash --gpus all 3090:v0
+conda activate llama
+cd /workspace/llm/TensorRT-LLM/examples/llama/test
+bash mmlu_test.sh(include fp16 & int8)
+
+conda activate bert
+cd /workspace/llm/TensorRT-LLM/examples/bert
+bash run_squad.sh(include fp16 & int8)
 ```
 
 3. run vits(vit、swin、tnt)
 ```
+cd /home/limengkui/project
 docker run -it --rm --gpus=all "--cap-add=SYS_ADMIN" --shm-size=16g --ulimit memlock=-1  --ulimit stack=67108864 -v $PWD:/workspace vits:v0
-cd /workspace/llm/FasterTransformer/examples/pytorch/vit
+cd /workspace/FasterTransformer/examples/pytorch/vit
 bash run_vit_fp16_accuracy.sh
 bash run_vit_int8_accuracy.sh
 
-cd /workspace/llm/FasterTransformer/examples/pytorch/swin
+cd /workspace/FasterTransformer/examples/pytorch/swin
 bash run_swin_fp16_accuracy.sh
 bash run_swin_int8_accuracy.sh
 
 ⭐tnt-Todo
 ```
 
-4. run llm(llama、bert)
+4. run yolo(yolov5、yolov10、yolo-world)-⭐Todo
 ```
-docker run --rm --shm-size=2g -it --name=tensorrt -e HF_ENDPOINT="https://hf-mirror.com" -v $PWD:/workspace --entrypoint /bin/bash --gpus all 3090:v0
-conda activate llama
-cd /workspace/llm/TensorRT-LLM/examples/llama/test
-bash mmlu_test.sh
-conda activate bert
-cd /workspace/llm/TensorRT-LLM/examples/bert
-bash run_squad.sh
+cd /workspace/yolo-models/
+python run.py gen
+python run.py eval
 ```
+
+
+
+
 
 
