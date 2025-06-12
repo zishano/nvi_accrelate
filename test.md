@@ -25,7 +25,7 @@ cd workspace
 1. run cnn(resnet50、mobilenetv2)
 ```
 cd /home/limengkui/project
-docker run --rm --shm-size=2g -it --name=tensorrt -e HF_ENDPOINT="https://hf-mirror.com" -v $PWD:/workspace --entrypoint /bin/bash --gpus all project_cnn_llm:v0
+docker run --rm --shm-size=2g -it --name=tensorrt -e HF_ENDPOINT="https://hf-mirror.com" -v $PWD:/workspace --entrypoint /bin/bash --gpus all project_cnn_llm_yolo:v0
 conda activate cnn
 cd /workspace/tensorrt_cnn/
 bash resnet50_fp16.sh
@@ -38,7 +38,7 @@ bash mobilenetv2_int8.sh
 2. run llm(llama、bert)
 ```
 cd /home/limengkui/project
-docker run --rm --shm-size=2g -it --name=tensorrt -e HF_ENDPOINT="https://hf-mirror.com" -v $PWD:/workspace --entrypoint /bin/bash --gpus all project_cnn_llm:v0
+docker run --rm --shm-size=2g -it --name=tensorrt -e HF_ENDPOINT="https://hf-mirror.com" -v $PWD:/workspace --entrypoint /bin/bash --gpus all project_cnn_llm_yolo:v0
 conda activate llama
 cd /workspace/llm/TensorRT-LLM/examples/llama/test
 bash mmlu_test.sh(include fp16 & int8)
@@ -67,11 +67,27 @@ bash run_tnt_fp16_accuracy.sh
 bash run_tnt_int8_accuracy.sh
 ```
 
-4. run yolo(yolov5、yolov10、yolo-world)-⭐Todo
+4. run yolo(yolov5、yolov7、yolov10、yolo-world)
 ```
-cd /workspace/yolo-models/
-python run.py gen
-python run.py eval
+cd /home/limengkui/project
+docker run --rm --shm-size=2g -it --name=tensorrt -e HF_ENDPOINT="https://hf-mirror.com" -v $PWD:/workspace --entrypoint /bin/bash --gpus all project_cnn_llm_yolo:v0
+conda activate yolos
+cd /workspace/YOLO/v5qat
+bash run_yolov5_fp16.sh
+bash run_yolov5_int8.sh
+
+cd /workspace/YOLO/v7qat
+bash run_yolov7_fp16.sh
+bash run_yolov7_int8.sh
+
+cd /workspace/YOLO/v10qat
+bash run_yolov10_fp16.sh
+bash run_yolov10_int8.sh
+
+cd /workspace/YOLO/worldqat
+bash run_yoloworld_fp16.sh
+bash run_yoloworld_int8.sh
+
 ```
 
 
