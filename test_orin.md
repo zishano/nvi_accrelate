@@ -37,21 +37,14 @@ bash mobilenetv2_int8.sh
 
 2. run vits(vit、swin、tnt)
 ```
-cd /media/qiyuan/F/Task/qiyaun/total_project/project
-docker run -it --rm --gpus=all "--cap-add=SYS_ADMIN" --shm-size=16g --ulimit memlock=-1  --ulimit stack=67108864 -v $PWD:/workspace project_vits:v0
-cd /workspace/FasterTransformer/examples/pytorch/vit
-bash run_vit_fp16_accuracy.sh
-bash run_vit_int8_accuracy.sh
-
-cd /workspace/FasterTransformer/examples/pytorch/swin
-bash run_swin_fp16_accuracy.sh
-bash run_swin_int8_accuracy.sh
-
 cd /home/limengkui/project
 docker run --name test -it --rm --gpus all --network host --shm-size 16g -v $PWD:/workspace project_vits:v1
 cd /workspace/Transformer-TensorRT
 bash run_tnt_fp16_accuracy.sh
 bash run_tnt_int8_accuracy.sh
+
+bash run_swin_fp16_accuracy.sh
+bash run_swin_int8_accuracy.sh
 ```
 
 4. run yolo(yolov5、yolov10、yolo-world)-⭐Todo
